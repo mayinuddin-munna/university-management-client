@@ -14,7 +14,7 @@ const Header = () => {
   const handleLogOut = () => {
     logout()
       .then((result) => {
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
         console.log(error);

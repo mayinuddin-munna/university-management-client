@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -11,6 +12,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const { createUser, createProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (data) => {
     createUser(data.email, data.password)
@@ -18,6 +20,48 @@ const Register = () => {
         const user = result.user;
         createProfile(data.name, data.photo);
         reset();
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+
+    createUser(data.email, data.password)
+      .then((result) => {
+        navigate("/");
+        const user = result.user;
+        createProfile(data.name, data.photo)
+          .then(() => {
+            const saveUser = {
+              name: data.name,
+              email: data.email,
+              photo: data.photo,
+              role: "student",
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "User SignUp successfully!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                }
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         const errorMessage = error.message;
