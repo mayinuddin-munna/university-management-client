@@ -38,7 +38,14 @@ const Header = () => {
               Books
             </NavLink>
           </li>
-          
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              About us
+            </NavLink>
+          </li>
         </ul>
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
@@ -90,7 +97,14 @@ const Header = () => {
                         Books
                       </Link>
                     </li>
-                    
+                    <li>
+                      <Link
+                        to="/about"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
+                      >
+                        About Us
+                      </Link>
+                    </li>
                   </ul>
                 </nav>
               </div>
