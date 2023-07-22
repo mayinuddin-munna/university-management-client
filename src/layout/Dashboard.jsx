@@ -128,7 +128,7 @@ const Dashboard = () => {
           />
         </svg>
       </button>
-      <div className="lg:ml-80 md:ml-80 my-24 px-24">
+      <div className="lg:ml-80 md:ml-80 my-24 lg:px-24 px-6">
         <Outlet />
       </div>
       <div
