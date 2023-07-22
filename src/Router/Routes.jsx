@@ -6,6 +6,8 @@ import Books from "../pages/Books/Books";
 import BookDetails from "../pages/Books/BookDetails";
 import About from "../pages/About/About";
 import LoadingSpinner from "../pages/Shared/LoadingSpinner/LoadingSpinner";
+import Login from "../pages/Register/Login";
+import Register from "../pages/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: 'loader',
         element: <LoadingSpinner />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
