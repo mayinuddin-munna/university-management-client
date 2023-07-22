@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import Loading from "../Pages/Shared/Loading/loading";
 import { Navigate, useLocation } from "react-router-dom";
 import LoadingSpinner from "../pages/Shared/LoadingSpinner/LoadingSpinner";
 

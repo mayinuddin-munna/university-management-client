@@ -8,6 +8,10 @@ import About from "../pages/About/About";
 import LoadingSpinner from "../pages/Shared/LoadingSpinner/LoadingSpinner";
 import Login from "../pages/Register/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/Dashboard";
+import AddMarks from "../pages/AddMarks/AddMarks";
+import Result from "../pages/Result/Result";
 
 const router = createBrowserRouter([
   {
@@ -20,22 +24,22 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/books',
+        path: "/books",
         element: <Books />,
-        loader: () => fetch('https://api.itbook.store/1.0/new'),
+        loader: () => fetch("https://api.itbook.store/1.0/new"),
       },
       {
-        path: 'book/:id',
+        path: "book/:id",
         element: <BookDetails />,
         loader: ({ params }) =>
           fetch(`https://api.itbook.store/1.0/books/${params.id}`),
       },
       {
-        path: 'about',
+        path: "/about",
         element: <About />,
       },
       {
-        path: 'loader',
+        path: "/loader",
         element: <LoadingSpinner />,
       },
       {
@@ -50,8 +54,21 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    // element:(),
-    children: [],
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/addMarks",
+        element: <AddMarks />,
+      },
+      {
+        path: "/dashboard/result",
+        element: <Result />,
+      },
+    ],
   },
 ]);
 

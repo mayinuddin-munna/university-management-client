@@ -13,10 +13,10 @@ const Header = () => {
 
   const handleLogOut = () => {
     logout()
-      .then(result => {
+      .then((result) => {
         console.log(result);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -58,6 +58,25 @@ const Header = () => {
               About us
             </NavLink>
           </li>
+          {user && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li>
+              <div className="avatar">
+                <div className="w-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img title={user?.displayName} src={user?.photoURL} />
+                </div>
+              </div>
+            </li>
+          )}
           <li>
             {user ? (
               <button className="font-medium" onClick={handleLogOut}>
@@ -130,6 +149,30 @@ const Header = () => {
                       >
                         About Us
                       </Link>
+                    </li>
+                    {user && (
+                      <li>
+                        <Link
+                          to="/dashboard"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
+                        >
+                          Dashboard
+                        </Link>
+                      </li>
+                    )}
+                    <li>
+                      {user ? (
+                        <button className="font-medium" onClick={handleLogOut}>
+                          LogOut
+                        </button>
+                      ) : (
+                        <NavLink
+                          to="/login"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
+                        >
+                          Login
+                        </NavLink>
+                      )}
                     </li>
                   </ul>
                 </nav>
