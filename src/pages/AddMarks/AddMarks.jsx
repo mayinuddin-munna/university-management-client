@@ -1,119 +1,162 @@
 import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 
 const AddMarks = () => {
-  const [formData, setFormData] = useState({
-    Roll: "",
-    Department: "",
-    Subject: "",
-    Semester: "",
-    Session: "",
-  });
+  const { reset, control, handleSubmit } = useForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
+  const onSubmit = (data) => {
+    const name = data.Name;
+    const roll = data.Roll;
+    const subject = data.Subject;
+    const department = data.Department;
+    const semester = data.Semester;
+    const session = data.Session;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here, e.g., sending data to a server or storing in state.
-    console.log(formData);
+    const result = { name, roll, subject, department, semester, session };
+
+    fetch("http://localhost:5000/admins", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(result),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        reset(), console.log(data);
+      });
   };
 
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit}
-        className="w-80 max-w-lg mx-auto mt-8 p-4 bg-gray-100 shadow-md rounded-lg"
-      >
-        <div className="mb-4">
-          <label htmlFor="roll" className="block text-gray-700 font-semibold">
-            Roll
-          </label>
-          <input
-            type="text"
-            name="Roll"
-            id="roll"
-            value={formData.Roll}
-            onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="department"
-            className="block text-gray-700 font-semibold"
-          >
-            Department
-          </label>
-          <input
-            type="text"
-            name="Department"
-            id="department"
-            value={formData.Department}
-            onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="subject"
-            className="block text-gray-700 font-semibold"
-          >
-            Subject
-          </label>
-          <input
-            type="text"
-            name="Subject"
-            id="subject"
-            value={formData.Subject}
-            onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="semester"
-            className="block text-gray-700 font-semibold"
-          >
-            Semester
-          </label>
-          <input
-            type="text"
-            name="Semester"
-            id="semester"
-            value={formData.Semester}
-            onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="session"
-            className="block text-gray-700 font-semibold"
-          >
-            Session
-          </label>
-          <input
-            type="text"
-            name="Session"
-            id="session"
-            value={formData.Session}
-            onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700"
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-lg mx-auto mt-8 p-4 bg-gray-100 shadow-md rounded-lg"
+    >
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-gray-700 font-semibold">
+          Name
+        </label>
+        <Controller
+          name="Name"
+          control={control}
+          rules={{ required: 'Name is required' }}
+          render={({ field }) => (
+            <input
+              type="text"
+              {...field}
+              className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+            />
+          )}
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="roll" className="block text-gray-700 font-semibold">
+          Roll
+        </label>
+        <Controller
+          name="Roll"
+          control={control}
+          rules={{ required: 'Roll is required' }}
+          render={({ field }) => (
+            <input
+              type="text"
+              {...field}
+              className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+            />
+          )}
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="subject" className="block text-gray-700 font-semibold">
+          Subject
+        </label>
+        <Controller
+          name="Subject"
+          control={control}
+          rules={{ required: 'Name is required' }}
+          render={({ field }) => (
+            <input
+              type="text"
+              {...field}
+              className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+            />
+          )}
+        />
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="department"
+          className="block text-gray-700 font-semibold"
         >
-          Add
-        </button>
-      </form>
-    </div>
+          Department
+        </label>
+        <Controller
+          name="Department"
+          control={control}
+          rules={{ required: 'Department is required' }}
+          render={({ field }) => (
+            <select
+              {...field}
+              className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+            >
+              <option value="">Select Department</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="BBA">BBA</option>
+            </select>
+          )}
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="semester" className="block text-gray-700 font-semibold">
+          Semester
+        </label>
+        <Controller
+          name="Semester"
+          control={control}
+          rules={{ required: 'Semester is required' }}
+          render={({ field }) => (
+            <select
+              {...field}
+              className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+            >
+              <option>Select Semester</option>
+              <option value="1">1st Semester</option>
+              <option value="2">2nd Semester</option>
+              <option value="3">3rd Semester</option>
+              <option value="4">4th Semester</option>
+              <option value="5">5th Semester</option>
+              <option value="6">6th Semester</option>
+              <option value="7">7th Semester</option>
+              <option value="8">8th Semester</option>
+            </select>
+          )}
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="session" className="block text-gray-700 font-semibold">
+          Session
+        </label>
+        <Controller
+          name="Session"
+          control={control}
+          rules={{ required: 'Session is required' }}
+          render={({ field }) => (
+            <input
+              type="text"
+              {...field}
+              className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+            />
+          )}
+        />
+      </div>
+      <button
+        type="submit"
+        className="w-full py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700"
+      >
+        Add
+      </button>
+    </form>
   );
 };
 
