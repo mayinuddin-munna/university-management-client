@@ -30,7 +30,7 @@ const Register = () => {
       .then((result) => {
         navigate("/");
         const user = result.user;
-        createProfile(data.name, data.photo)
+        createProfile(data.name, data.photoURL)
           .then(() => {
             const saveUser = {
               name: data.name,

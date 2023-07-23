@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  //   const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin();
   const { user, loading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,6 +12,7 @@ const Dashboard = () => {
     setIsOpen(!isOpen);
   };
 
+  /* ----------Student------------ */
   const student = (
     <div className="p-6">
       <div className="avatar my-4">
@@ -136,7 +137,7 @@ const Dashboard = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 fixed z-20 top-0 left-0 w-64 md:w-80 h-full bg-blue-600 text-white p-4 shadow-lg transition-transform duration-300 ease-in-out`}
       >
-        {admin ? admin : student}
+        {isAdmin ? admin : student}
       </div>
       {isOpen && (
         <div
