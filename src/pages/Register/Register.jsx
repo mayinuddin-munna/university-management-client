@@ -38,7 +38,7 @@ const Register = () => {
               photo: data.photo,
               role: "student",
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://school-management-du4r.onrender.com/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

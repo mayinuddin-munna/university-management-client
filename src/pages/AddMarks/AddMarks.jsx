@@ -29,7 +29,7 @@ const AddMarks = () => {
       final,
     };
 
-    fetch("http://localhost:5000/admins", {
+    fetch("https://school-management-du4r.onrender.com/admins", {
       method: "POST",
       headers: {
         "content-type": "application/json",
