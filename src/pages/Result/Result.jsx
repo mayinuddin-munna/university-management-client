@@ -109,16 +109,18 @@ const Result = () => {
             <p className="text-lg">Semester: {searchResult.semester}st</p>
             <p className="text-lg">Semester: {searchResult.subject}</p>
             <p className="text-lg">Subject: {searchResult.subject}</p>
-            <p className="text-lg">Assignment Marks: {parseInt(searchResult.Marks)}</p>
-            <p className="text-lg">Class Test: {parseInt(searchResult.classTest)}</p>
-            <p className="text-lg">Mid Term: {parseInt(searchResult.minTerm)}</p>
-            <p className="text-lg">Final: {parseInt(searchResult.final)}</p>
+            <p className="text-lg">Assignment Marks: {searchResult.Marks}</p>
+            <p className="text-lg">Class Test: {searchResult.classTest}</p>
+            <p className="text-lg">Mid Term: {searchResult.minTerm}</p>
+            <p className="text-lg">Final: {searchResult.final}</p>
             <h4>
-              CGPA: {" "}
-              {parseInt(searchResult.Marks +
+              Total Marks: {" "}
+              {(
+                searchResult.Marks +
                 searchResult.classTest +
                 searchResult.minTerm +
-                searchResult.final / 4)}
+                searchResult.final
+              ).toFixed(2)}
             </h4>
           </div>
         )}
