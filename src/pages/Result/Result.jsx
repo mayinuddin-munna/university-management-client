@@ -9,7 +9,7 @@ const Result = () => {
   const onSubmit = async (data) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/search?roll=${data.rollNumber}&session=${data.session}&semester=${data.semester}`,
+        `https://school-management-du4r.onrender.com/search?roll=${data.rollNumber}&session=${data.session}&semester=${data.semester}`,
         {
           method: "GET",
           headers: {
