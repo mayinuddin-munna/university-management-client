@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 const Result = () => {
   const { control, handleSubmit } = useForm();
   const [searchResult, setSearchResult] = useState(null);
-  console.log(searchResult);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const onSubmit = async (data) => {
     try {
@@ -103,25 +103,44 @@ const Result = () => {
       </form>
       <div className="container mx-auto mt-8">
         {searchResult && (
-          <div className="mt-4">
-            <p className="text-lg">Roll: {searchResult.roll}</p>
-            <p className="text-lg">Session: {searchResult.session}</p>
-            <p className="text-lg">Semester: {searchResult.semester}st</p>
-            <p className="text-lg">Semester: {searchResult.subject}</p>
-            <p className="text-lg">Subject: {searchResult.subject}</p>
-            <p className="text-lg">Assignment Marks: {searchResult.Marks}</p>
-            <p className="text-lg">Class Test: {searchResult.classTest}</p>
-            <p className="text-lg">Mid Term: {searchResult.minTerm}</p>
-            <p className="text-lg">Final: {searchResult.final}</p>
-            <h4>
-              Total Marks: {" "}
-              {(
-                searchResult.Marks +
-                searchResult.classTest +
-                searchResult.minTerm +
-                searchResult.final
-              ).toFixed(2)}
-            </h4>
+          <div className="flex justify-center items-center h-screen">
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              onClick={() => setIsPopupOpen(true)}
+            >
+              Open Popup
+            </button>
+
+            {isPopupOpen && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-white p-6 rounded shadow-md">
+                  {/* Your popup form content */}
+                  <h2 className="text-lg font-semibold">Popup Form</h2>
+                  <form>
+                    {/* Form fields */}
+                    {/* ... */}
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        type="button"
+                        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                        onClick={() => setIsPopupOpen(false)}
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="submit"
+                        className="ml-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                        onClick={() => {
+                          // Handle form submission here
+                        }}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 
 const AddMarks = () => {
@@ -47,86 +47,6 @@ const AddMarks = () => {
       <div className="flex mx-auto justify-center">
         <div className="w-full max-w-lg lg:mx-12 mt-8 p-4 bg-gray-100 shadow-md rounded-lg">
           <div className="mb-4">
-            <label
-              htmlFor="marks"
-              className="block text-gray-700 font-semibold"
-            >
-              Assignment Marks
-            </label>
-            <Controller
-              name="Marks"
-              control={control}
-              rules={{ required: "Assignment Marks is required" }}
-              render={({ field }) => (
-                <input
-                  type="text"
-                  {...field}
-                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-                />
-              )}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="class"
-              className="block text-gray-700 font-semibold"
-            >
-              Class Test
-            </label>
-            <Controller
-              name="ClassTest"
-              control={control}
-              rules={{ required: "Class Test is required" }}
-              render={({ field }) => (
-                <input
-                  type="text"
-                  {...field}
-                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-                />
-              )}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="minTerm"
-              className="block text-gray-700 font-semibold"
-            >
-              Min Term
-            </label>
-            <Controller
-              name="MinTerm"
-              control={control}
-              rules={{ required: "Min Term is required" }}
-              render={({ field }) => (
-                <input
-                  type="text"
-                  {...field}
-                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-                />
-              )}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="final"
-              className="block text-gray-700 font-semibold"
-            >
-              Final Exam
-            </label>
-            <Controller
-              name="Final"
-              control={control}
-              rules={{ required: "Final Exam is required" }}
-              render={({ field }) => (
-                <input
-                  type="text"
-                  {...field}
-                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-                />
-              )}
-            />
-          </div>
-          <div className="mb-4">
             <label htmlFor="name" className="block text-gray-700 font-semibold">
               Name
             </label>
@@ -134,25 +54,6 @@ const AddMarks = () => {
               name="Name"
               control={control}
               rules={{ required: "Name is required" }}
-              render={({ field }) => (
-                <input
-                  type="text"
-                  {...field}
-                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
-                />
-              )}
-            />
-          </div>
-        </div>
-        <div className="w-full max-w-lg lg:mx-12 mt-8 p-4 bg-gray-100 shadow-md rounded-lg">
-          <div className="mb-4">
-            <label htmlFor="roll" className="block text-gray-700 font-semibold">
-              Roll
-            </label>
-            <Controller
-              name="Roll"
-              control={control}
-              rules={{ required: "Roll is required" }}
               render={({ field }) => (
                 <input
                   type="text"
@@ -208,6 +109,85 @@ const AddMarks = () => {
           </div>
           <div className="mb-4">
             <label
+              htmlFor="marks"
+              className="block text-gray-700 font-semibold"
+            >
+              Assignment Marks
+            </label>
+            <Controller
+              name="Marks"
+              control={control}
+              rules={{ required: "Assignment Marks is required" }}
+              render={({ field }) => (
+                <input
+                  type="text"
+                  {...field}
+                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+                />
+              )}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="minTerm"
+              className="block text-gray-700 font-semibold"
+            >
+              Mid Term
+            </label>
+            <Controller
+              name="MinTerm"
+              control={control}
+              rules={{ required: "Min Term is required" }}
+              render={({ field }) => (
+                <input
+                  type="text"
+                  {...field}
+                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+                />
+              )}
+            />
+          </div>
+        </div>
+        <div className="w-full max-w-lg lg:mx-12 mt-8 p-4 bg-gray-100 shadow-md rounded-lg">
+          <div className="mb-4">
+            <label htmlFor="roll" className="block text-gray-700 font-semibold">
+              Roll
+            </label>
+            <Controller
+              name="Roll"
+              control={control}
+              rules={{ required: "Roll is required" }}
+              render={({ field }) => (
+                <input
+                  type="text"
+                  {...field}
+                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+                />
+              )}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="session"
+              className="block text-gray-700 font-semibold"
+            >
+              Session
+            </label>
+            <Controller
+              name="Session"
+              control={control}
+              rules={{ required: "Session is required" }}
+              render={({ field }) => (
+                <input
+                  type="text"
+                  {...field}
+                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+                />
+              )}
+            />
+          </div>
+          <div className="mb-4">
+            <label
               htmlFor="semester"
               className="block text-gray-700 font-semibold"
             >
@@ -237,15 +217,35 @@ const AddMarks = () => {
           </div>
           <div className="mb-4">
             <label
-              htmlFor="session"
+              htmlFor="class"
               className="block text-gray-700 font-semibold"
             >
-              Session
+              Class Test
             </label>
             <Controller
-              name="Session"
+              name="ClassTest"
               control={control}
-              rules={{ required: "Session is required" }}
+              rules={{ required: "Class Test is required" }}
+              render={({ field }) => (
+                <input
+                  type="text"
+                  {...field}
+                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:border-indigo-600"
+                />
+              )}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="final"
+              className="block text-gray-700 font-semibold"
+            >
+              Final Exam
+            </label>
+            <Controller
+              name="Final"
+              control={control}
+              rules={{ required: "Final Exam is required" }}
               render={({ field }) => (
                 <input
                   type="text"

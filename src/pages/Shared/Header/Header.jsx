@@ -22,17 +22,14 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-gray-100 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-      <div className="relative flex items-center justify-between">
-        {/* Logo Section */}
+    <div className="bg-gray-100 px-4 py-5">
+      <div className="relative flex items-center justify-between  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <Link to="/" className="inline-flex items-center">
           <BoltIcon className="h-6 w-6 text-blue-500" />
           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800">
             SchoolM
           </span>
         </Link>
-
-        {/* Nav Items Section */}
         <ul className="items-center hidden space-x-8 lg:flex">
           <li>
             <NavLink
@@ -72,7 +69,7 @@ const Header = () => {
             <li>
               <div className="avatar">
                 <div className="w-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img title={user?.displayName} src={user?.photoURL} />
+                  <img alt="image" src={user?.photoURL} />
                 </div>
               </div>
             </li>
@@ -111,7 +108,7 @@ const Header = () => {
                     <Link to="/" className="inline-flex items-center">
                       <BoltIcon className="h-6 w-6 text-blue-500" />
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        nextPage
+                        SchoolManagement
                       </span>
                     </Link>
                   </div>

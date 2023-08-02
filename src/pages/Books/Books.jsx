@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useLoaderData, useNavigation } from "react-router-dom";
 import Book from "./Book";
