@@ -1,23 +1,33 @@
 import React from "react";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, MenuProps, theme } from "antd";
+import { Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
+const items: MenuProps["items"] = [
+  {
+    key: 0,
+    label: "Dashboard",
+  },
+  {
+    key: 1,
+    label: "Profile",
+  },
+  {
+    key: 2,
+    label: "User Management",
+    children: [
+      {
+        key: 20,
+        label: "Dashboard",
+      },
+      {
+        key: 21,
+        label: "Profile",
+      },
+    ],
+  },
+];
 
 const MainLayout: React.FC = () => {
   const {
@@ -25,7 +35,7 @@ const MainLayout: React.FC = () => {
   } = theme.useToken();
 
   return (
-    <Layout>
+    <Layout style={{ height: "100vh" }}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -36,7 +46,9 @@ const MainLayout: React.FC = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
+        <div style={{ color: "white", textAlign: "center", height: "3rem" }}>
+          <h1>University Management</h1>
+        </div>
         <Menu
           theme="dark"
           mode="inline"
@@ -55,7 +67,7 @@ const MainLayout: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            content
+            <Outlet/>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
