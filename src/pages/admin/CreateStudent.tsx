@@ -2,7 +2,7 @@
 const CreateStudent = () => {
   return (
     <div>
-      <p>Create Student</p>
+      <h1>Create Student</h1>
     </div>
   );
 };
