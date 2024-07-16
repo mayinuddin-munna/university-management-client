@@ -9,8 +9,8 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      id: "1234",
-      password: "admin1234",
+      id: "0001",
+      password: "admin12345",
     },
   });
 
@@ -21,6 +21,8 @@ const Login = () => {
       id: data.id,
       password: data.password,
     };
+    // console.log(userInfo);
+    
     const res = await login(userInfo).unwrap();
     const user = verifyToken(res.data.accessToken);
 
